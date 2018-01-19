@@ -1,0 +1,25 @@
+{
+  "FlightSearchRequest": {
+    "Adults": 1,
+    "Child": 0,
+    "Seniors": 0,
+    "InfantInLap": 0,
+    "InfantOnSeat": 0,
+    "Youths": 0,
+    "Kid": 0,
+    "TypeOfTrip": "ONEWAYTRIP",
+    "ClassOfService": "ECONOMY",
+    "SearchAlternateDates": false,
+    "FromTime": null,
+    "ToTime": null,
+    "SegmentDetails": [
+      {
+        "Origin": "NYC",
+        "Destination": "LON",
+        "DepartureDate": "2018-02-03T00:00:00",
+        "DepartureTime": "1100"
+      }
+    ]
+  },
+  "ResponseVersion": "VERSION41"
+}
