@@ -1,5 +1,5 @@
 import React from "react";
-import api from "../utils/api";
+import api from "../../utils/api";
 import flights from "../../flights.json";
 
 class Stuff extends React.Component {
@@ -146,9 +146,5 @@ class Stuff extends React.Component {
 	}
 
 }
-
-//NEEDED
-//getting internal arrays from firstArrayUnsort
-//
 
 export default Stuff;
