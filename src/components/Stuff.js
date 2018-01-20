@@ -32,13 +32,21 @@ class Stuff extends React.Component {
 				var codeFares = codeFaresArrays.map(e => `${e}`);
 				//second, get the code from the outbound segmentid path
 				var codeFlights = flightArrayOutUnsort.map(e => e.Segmentid);
-				//third, get the departure and arrival times
+				//third, get all the information in the OutBoundOption object
 				var flightDepartTime = flightArrayOutUnsort.map(e => e.FlightSegment);
 				var departTime = [];
 				var arriveTime = [];
+				var departAirport = [];
+				var arriveAirport = [];
+				var duration = [];
+				var flightNum = [];
 				flightDepartTime.map(e => e).forEach(x => {
 					departTime.push(x[0].DepartureDateTime);
 					arriveTime.push(x[0].ArrivalDateTime);
+					departAirport.push(x[0].DepartureAirport.LocationCode);
+					arriveAirport.push(x[0].ArrivalAirport.LocationCode);
+					duration.push(x[0].FlightDuration);
+					flightNum.push(x[0].FlightNumber);
 				});
 
 				//use insertion sort to organize from lowest to highest price
@@ -58,20 +66,22 @@ class Stuff extends React.Component {
 				insertionSort(adultFares);
 				console.log(adultFares);
 
-				console.log("fare codes correct");
-				console.log(codeFares);
-				console.log("================================================================")
-				console.log("flight codes correct");
-				console.log(codeFlights);
-				console.log("================================================================")
-				console.log("Departure times correct");
+				console.log("===============================================================================");
+				console.log("Departure times");
 				console.log(departTime);
-				console.log("----------------------------------------------------------------")
-				console.log("Arrival times correct");
+				console.log("Arrival times");
 				console.log(arriveTime);
-
-				console.log(departTime[codeFlights.indexOf("DY7016L9DY")]);
-				console.log(arriveTime[codeFlights.indexOf("DY7016L9DY")]);
+				console.log("===============================================================================");
+				console.log("Departure Airport Codes");
+				console.log(departAirport);
+				console.log("Arrival Airport Codes");
+				console.log(arriveAirport);
+				console.log("===============================================================================");
+				console.log("Flight Durations");
+				console.log(duration);
+				console.log("===============================================================================");
+				console.log("Flight Numbers")
+				console.log(flightNum);
 
 				//if I have codeFlights and I wanted to departTime or arriveTime,
 				//look into indexOf.
@@ -79,7 +89,6 @@ class Stuff extends React.Component {
 				//arriveTime[codeFlights.indexOf("DYX&HJD")] >> same
 				//
 				//if I have the index, I could plug it into departTime, and would get the matching flight.
-
 
 				this.setState({
 					flightData: res.data.FlightResponse.FpSearch_AirLowFaresRS,
@@ -98,8 +107,8 @@ class Stuff extends React.Component {
 
 	};
 
-//runs first
-//runs again after every setState
+	//runs first
+	//runs again after every setState
 	render() {
 
 		if (!this.state.flightData) {
@@ -114,7 +123,7 @@ class Stuff extends React.Component {
 			<div>
 				<h1>Currency: {this.state.flightData.Currency.CurrencyCode}</h1>
 				<h1>Banner: {this.state.flightData.Banner}</h1>
-				<h1>Codes: {this.state.codeFlights}</h1>
+				<h1>Price: {this.state.codeFlights}</h1>
 			</div>
 
 		)
